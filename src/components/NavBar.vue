@@ -13,6 +13,10 @@
                         <button class="btn btn-outline-success" v-on:click="signUp">
                             Sign Up</button>
                     </li>
+                    <li class="nav-item">
+                        <button class="btn btn-success" v-on:click="logIn">
+                            Log In</button>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -28,7 +32,11 @@ export default {
             router.push({ name: 'signUp-route' });
         }
 
-        return { signUp }
+        const logIn = () => {
+            router.push({ name: 'login-route' });
+        }
+
+        return { signUp, logIn }
     }
 }
 </script>
