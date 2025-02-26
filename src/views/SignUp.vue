@@ -43,7 +43,7 @@
 <script>
 import axios from 'axios';
 import { reactive, ref } from "vue";
-import FieldValidating from '../helper/validatingField';
+import FieldValidating from '../helpers/validatingField';
 import router from "../router";
 
 export default {
