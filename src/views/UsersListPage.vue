@@ -1,5 +1,17 @@
 <template>
     <div>
-        <h1>This is User list</h1>
+        <div class="container">
+            <UserList />
+        </div>
     </div>
 </template>
+
+<script>
+import UserList from "../components/UsersList.vue"
+
+export default {
+    components: {
+        UserList: UserList
+    }
+}
+</script>

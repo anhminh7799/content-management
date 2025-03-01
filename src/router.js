@@ -5,12 +5,14 @@ import SignUp from "./views/SignUp.vue";
 import LogIn from "./views/LogIn.vue";
 import AboutPage from "./views/AboutPage.vue";
 import UsersListPage from "./views/UsersListPage.vue";
+import UserDetail from "./views/UserDetail.vue";
+//import AddPost from "./views/Posts.vue";
+import Posts from "./views/PostsPage.vue";
 
 const routes = [
   {
     path: "/",
     name: "home-route",
-    component: HomePage,
   },
   {
     path: "/signup",
@@ -31,6 +33,16 @@ const routes = [
     path: "/users",
     name: "users-route",
     component: UsersListPage,
+  },
+  {
+    path: "/userDetail/:id",
+    name: "userDetail-route",
+    component: UserDetail,
+  },
+  {
+    path: "/posts",
+    name: "userDetail-route",
+    component: Posts,
   },
 ];
 

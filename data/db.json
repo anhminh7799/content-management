@@ -1,20 +1,29 @@
 {
   "users": [
     {
-      "id": "3e84",
       "userName": "anhminh7799",
       "email": "anhminh7799@gmail.com",
-      "password": "123456"
+      "firstName":"Minh",
+      "lastName":"Nguyen",
+      "middleName":"Le Anh",
+      "password": "123456",
+      "id": "3e84"
     },
     {
       "id": "33f8",
       "userName": "haodang",
+      "firstName":"Hao",
+      "lastName":"Dang",
+      "middleName":"Thi My",
       "email": "haodang@gmail.com",
       "password": "123456"
     },
     {
       "id": "4cfe",
       "userName": "hello123",
+      "firstName":"Jonh",
+      "lastName":"Smiths",
+      "middleName":"Jr",
       "email": "hello123@gmail.com",
       "password": "12345676788"
     }

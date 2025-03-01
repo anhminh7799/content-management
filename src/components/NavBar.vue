@@ -2,7 +2,7 @@
   <Login />
   <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" v-on:click="homePage">Content Management.
+      <a class="navbar-brand" v-on:click="homePage" href="">Content Management.
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -18,14 +18,26 @@
 
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <button class="btn btn-outline-success" v-on:click="signUp">
+            <button class="btn btn-outline-success" v-on:click="signUp" v-if="!userName">
               Sign Up
             </button>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="!userName">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-success ms-2" data-bs-toggle="modal" data-bs-target="#logInModal">
               Log In
+            </button>
+          </li>
+          <li class="nav-item" v-if="userName">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success ms-2" v-on:click="userDetail(userId)">
+              Hello - {{ userName }}
+            </button>
+          </li>
+          <li class="nav-item" v-if="userName">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-success ms-2" v-on:click="logOut">
+              Log Out
             </button>
           </li>
         </ul>
@@ -42,6 +54,22 @@ import LoginModal from "./LoginModal.vue";
 export default {
   components: {
     Login: LoginModal
+  },
+  data() {
+    return {
+      userName: '',
+      userId: ''
+    }
+  },
+  mounted() {
+    let getUserLogin = JSON.parse(localStorage.getItem("userLogin"));
+
+    if (getUserLogin) {
+      if (getUserLogin.userName && getUserLogin.id) {
+        this.userName = getUserLogin.userName;
+        this.userId = getUserLogin.id;
+      }
+    }
   },
   setup() {
     const listNavItems = reactive([
@@ -87,7 +115,17 @@ export default {
       router.push({ name: "login-route" });
     };
 
-    return { signUp, logIn, homePage, listNavItems, itemAction };
+    const logOut = () => {
+      localStorage.removeItem('userLogin');
+      router.push({ name: "home-route" });
+      router.go(0);
+    }
+
+    const userDetail = (id) => {
+      router.push({ name: "userDetail-route", params: { id: id } });
+    }
+
+    return { signUp, logIn, homePage, listNavItems, itemAction, logOut, userDetail };
   },
 
 

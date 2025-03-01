@@ -31,7 +31,7 @@
                             <button type="submit" v-on:mousedown="signUp" class="btn btn-primary">Submit</button>
                         </div>
                         <div class="col-6">
-                            <button type="submit" class="btn btn-secondary">Cancel</button>
+                            <button type="submit" class="btn btn-secondary" v-on:click="cancelAction">Cancel</button>
                         </div>
                     </div>
                 </form>
@@ -62,6 +62,8 @@ export default {
                 if (signUpResult.status == 201) {
                     alert("Sign Up has been successfully!");
                     router.push({ name: 'home-route' });
+                    //reload page to get updates
+                    router.go(0);
                 }
             }
             else {
@@ -126,8 +128,12 @@ export default {
             return result;
         };
 
+        //cancel button
+        const cancelAction = () => {
+            router.push({ name: "home-route" });
+        }
 
-        return { signUp, form, errorsMsg, validateUsername, validateEmail, validatePassword };
+        return { signUp, form, errorsMsg, validateUsername, validateEmail, validatePassword, cancelAction };
     },
 };
 </script>

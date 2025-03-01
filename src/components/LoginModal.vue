@@ -61,10 +61,10 @@ export default {
                 //filter
                 userData.value = userData.value.filter(item => item.userName == form.userName && item.password == form.password);
                 if (userData.value.length > 0) {
-                    localStorage.setItem("userLogin", JSON.stringify(userData.value));
+                    localStorage.setItem("userLogin", JSON.stringify(userData.value[0]));
                     router.push({ name: "home-route" });
-                    //closing the modal
-                    isFade = "fade";
+                    //reload page to get updates
+                    router.go(0);
                 }
                 else {
                     alert("Login failed!");
