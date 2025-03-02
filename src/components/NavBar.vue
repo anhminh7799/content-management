@@ -84,10 +84,15 @@ export default {
         route: "users-route",
       },
       {
+        name: "Posts",
+        isActive: false,
+        route: "posts-route",
+      },
+      {
         name: "About",
         isActive: false,
         route: "about-route",
-      },
+      }
     ]);
 
     //For the routing and highlighting the choosen button

@@ -27,5 +27,14 @@
       "email": "hello123@gmail.com",
       "password": "12345676788"
     }
+  ],
+  "posts":[
+    {
+      "id":"1",
+      "subject":"Hạt Gạo Làng Ta",
+      "content":"Hạt Gạo Làng Ta\nCó vị phù sa\nCủa sông Kinh Thầy\nCó hương sen thơm\nTrong hồ nước đầy\nCó lời mẹ hát\nNgọt bùi hôm nay",
+      "author":"Tran Dang Khoa",
+      "creator": "Minh Le Anh Nguyen"
+    }
   ]
 }
