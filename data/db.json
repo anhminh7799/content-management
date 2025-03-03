@@ -7,6 +7,7 @@
       "lastName":"Nguyen",
       "middleName":"Le Anh",
       "password": "123456",
+      "role":"Admin",
       "id": "3e84"
     },
     {
@@ -16,6 +17,7 @@
       "lastName":"Dang",
       "middleName":"Thi My",
       "email": "haodang@gmail.com",
+      "role":"Admin",
       "password": "123456"
     },
     {
@@ -25,7 +27,8 @@
       "lastName":"Smiths",
       "middleName":"Jr",
       "email": "hello123@gmail.com",
-      "password": "12345676788"
+      "password": "123456",
+      "role":"User"
     }
   ],
   "posts":[
@@ -35,6 +38,30 @@
       "content":"Hạt Gạo Làng Ta\nCó vị phù sa\nCủa sông Kinh Thầy\nCó hương sen thơm\nTrong hồ nước đầy\nCó lời mẹ hát\nNgọt bùi hôm nay",
       "author":"Tran Dang Khoa",
       "creator": "Minh Le Anh Nguyen"
+    },
+    {
+      "id":"2",
+      "subject":"Mưa",
+      "content":"Sắp mưa\nSắp mưa\nNhững con mối\nBay ra\nMối trẻ\nBay cao\nMối già\nBay thấp",
+      "author":"Tran Dang Khoa",
+      "creator": "Hao Thi My Dang"
+    },
+    {
+      "id":"2",
+      "subject":"Ảnh Bác",
+      "content":"Nhà em treo ảnh Bác Hồ\nBên trên là một lá cờ đỏ tươi\nNgày ngày Bác mỉm miệng cười\nBác nhìn chúng cháu vui chơi trong nhà\nNgoài sân có mấy con gà\nNgoài vườn có mấy quả na chín rồi",
+      "author":"Tran Dang Khoa",
+      "creator": "John Jr Smiths"
+    }
+  ],
+  "roles":[
+    {
+      "roleId":"1",
+      "roleName":"Admin"
+    },
+    {
+      "roleId":"2",
+      "roleName":"User"
     }
   ]
 }

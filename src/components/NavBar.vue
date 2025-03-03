@@ -10,7 +10,7 @@
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" v-for="item in listNavItems" :key="item.name" v-on:click="itemAction(item.name)">
+          <li class="nav-item" v-for="item in listItem" :key="item.name" v-on:click="itemAction(item.name)">
             <a class="nav-link" type="button" aria-current="page" v-bind:class="{ active: item.isActive }">
               {{ item.name }}</a>
           </li>
@@ -47,53 +47,65 @@
 </template>
 
 <script>
-import { reactive } from "vue";
+import { computed, onMounted, reactive, ref } from "vue";
 import router from "../router";
 import LoginModal from "./LoginModal.vue";
+import authenticated from '../helpers/authenticated';
 
 export default {
   components: {
     Login: LoginModal
   },
-  data() {
-    return {
-      userName: '',
-      userId: ''
-    }
-  },
-  mounted() {
-    let getUserLogin = JSON.parse(localStorage.getItem("userLogin"));
-
-    if (getUserLogin) {
-      if (getUserLogin.userName && getUserLogin.id) {
-        this.userName = getUserLogin.userName;
-        this.userId = getUserLogin.id;
-      }
-    }
-  },
   setup() {
+    let listItem = ref([]);
+    const userRole = ref("");
+    const userId = ref("");
+    const userName = ref("");
+
     const listNavItems = reactive([
       {
         name: "Home",
         isActive: true,
         route: "home-route",
+        authen: "all"
       },
       {
         name: "Users",
         isActive: false,
         route: "users-route",
+        authen: "Admin"
       },
       {
         name: "Posts",
         isActive: false,
         route: "posts-route",
+        authen: "all"
       },
       {
         name: "About",
         isActive: false,
         route: "about-route",
+        authen: "all"
       }
     ]);
+
+    onMounted(() => {
+      const isLogin = authenticated.isAthenticated();
+      const getInfor = authenticated.getLoginInfor();
+      const getRole = authenticated.getRole();
+
+      if (isLogin && getInfor.length > 0) {
+        userName.value = getInfor.userName;
+        userId.value = getInfor.id;
+        userRole.value = getRole;
+      }
+    })
+
+    //Computed property to filter navigation items based on role
+    listItem = computed(() => {
+      return userRole.value.toUpperCase() === "ADMIN" ? listNavItems :
+        listNavItems.filter(item => item.authen == "all");
+    })
 
     //For the routing and highlighting the choosen button
     const itemAction = (name) => {
@@ -130,7 +142,7 @@ export default {
       router.push({ name: "userDetail-route", params: { id: id } });
     }
 
-    return { signUp, logIn, homePage, listNavItems, itemAction, logOut, userDetail };
+    return { signUp, logIn, homePage, listItem, itemAction, logOut, userDetail };
   },
 
 
